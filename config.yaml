@@ -1,0 +1,22 @@
+app:
+  title: "Multi-Language RAG (Education Domain)"
+  description: "Retrieve across languages and answer in the user's preferred language — no OpenAI."
+  default_ui_language: "en"
+  max_context_docs: 4
+
+data:
+  input_dir: "./data"
+  persist_dir: "./indexes/chroma"
+
+models:
+  embedding: "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2"
+  generation: "google/mt5-small" # or google/mt5-base for better quality
+  translation: "facebook/mbart-large-50-many-to-many-mmt"
+
+retrieval:
+  chunk_size: 800
+  chunk_overlap: 120
+  top_k: 4
+
+evaluation:
+  sample_questions_path: "./tests/sample_questions.jsonl"
